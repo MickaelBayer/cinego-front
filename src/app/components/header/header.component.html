@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
+  <a class="navbar-brand mb-0 h1" style="cursor:default"><b>Cinego</b></a>
+  <ul class="navbar-nav" *ngIf="isAuth"><!-- *ngIf="isAuth"-->
+    <li class="nav-item" ngbDropdown>
+      <a class="nav-link" id="navbarDropdown" role="button" style="cursor:pointer" ngbDropdownToggle>
+        Project
+      </a>
+      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" (click)="onNewProject()">New project</a>
+        <a class="dropdown-item" (click)="onLoadProject()">Load a project</a>
+        <a class="dropdown-item" (click)="onSaveProject()">Save the current project</a>
+        <a class="dropdown-item" (click)="onDeleteProject()">Delete a project</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink="#">Action</a>
+        <a class="dropdown-item" routerLink="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink="#">Something else here</a>
+      </div>
+    </li>
+    <li class="nav-item" ngbDropdown>
+      <a class="nav-link" id="navbarDropdown" style="cursor:pointer" role="button" ngbDropdownToggle>
+        Annotation
+      </a>
+      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" routerLink="#">Action</a>
+        <a class="dropdown-item" routerLink="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink="#">Something else here</a>
+      </div>
+    </li>
+    <li class="nav-item" ngbDropdown>
+      <a class="nav-link" id="navbarDropdown" style="cursor:pointer" role="button" ngbDropdownToggle>
+        View
+      </a>
+      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" routerLink="#">Action</a>
+        <a class="dropdown-item" routerLink="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink="#">Something else here</a>
+      </div>
+    </li>
+    <li class="nav-item" ngbDropdown>
+      <a class="nav-link" id="navbarDropdown" style="cursor:pointer" role="button" ngbDropdownToggle>
+        Help
+      </a>
+      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" routerLink="#">Action</a>
+        <a class="dropdown-item" routerLink="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink="#">Something else here</a>
+      </div>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li routerLinkActive="active" class="nav-item" *ngIf="!isAuth">
+      <a routerLink="auth/signup" class="nav-link">Créer un compte</a>
+    </li>
+    <li routerLinkActive="active" class="nav-item" *ngIf="!isAuth">
+      <a class="nav-link" routerLink="auth/login">Se connecter</a>
+    </li>
+    <li *ngIf="isAuth" class="nav-item" routerLinkActive="active">
+      <a class="nav-link" (click)="onLogout()" style="cursor:pointer">Se déconnecter</a>
+    </li>
+  </ul>
+</nav>

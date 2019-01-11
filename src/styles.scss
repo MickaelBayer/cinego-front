@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+* Modification for the header od the accordion's ng-bootstrap
+*/
+ngb-accordion .card-header > * > * {
+    text-align: left;
+    text-decoration: none;
+    color: #6c757d !important;
+    width: 100%;
+    height: 100%;
+    padding: .5rem 1.25rem; /* Or whatever padding you would have applied in the next rule*/
+  }
+  
+  ngb-accordion .card-header > * > *:hover {
+    text-decoration: none;
+    color: #494f54 !important;
+  }
+
+  ngb-accordion .card-header > * > *:active {
+    text-decoration: none;
+    //color: red !important;
+  }
+
+  ngb-accordion .card-header > * > *:focus {
+    text-decoration: none;
+    //color: #494f54 !important;
+  }
+
+  ngb-accordion .card-header {
+    padding: 0; /* Just to make sure the <a> fills the whole card header */
+  }
+
+  .card-header {
+    padding: .5rem 1.25rem;; /* apply to all card-header */
+  }
+
+  .card-footer {
+    padding: .5rem 1.25rem;; /* apply to all card-footer */
+  }
