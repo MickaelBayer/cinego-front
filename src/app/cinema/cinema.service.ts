@@ -17,6 +17,9 @@ export class CinemaService {
     this.cinemaSubject.next(this.cinema);
   }
 
+  /**
+   * Get all the cinemas from the DB
+   */
   getCinemas() {
     return new Promise((resolve, reject) => {
       this.http.get('http://localhost:8282/cinema').subscribe(

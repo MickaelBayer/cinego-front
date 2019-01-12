@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'auth/login', component: LoginComponent},
   {path: 'auth/signup', component: SignupComponent},
   // redirections
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent }
 ];
 

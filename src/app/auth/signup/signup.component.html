@@ -4,7 +4,7 @@
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Nom</label>
-        <input type="text" id="nom" class="form-control input" formControlName="nom">
+        <input type="text" id="nom" class="form-control input" formControlName="nom" autofocus>
       </div>
       <div class="form-group">
         <label for="email">Prénom</label>
@@ -16,9 +16,12 @@
       </div>
       <div class="form-group">
         <label for="password">Mot de passe</label>
-        <input type="password" id="password" class="form-control input" formControlName="password">
+        <input type="password" id="password" class="form-control input" formControlName="password" aria-describedby="passwordHelpBlock">
+        <small id="passwordHelpBlock" class="form-text text-muted">
+          Mot de passe : Minimum 6 caractères alphanumériques, sans espaces ou caractères spéciaux.
+        </small>
       </div>
-      <button class="btn btn-primary mb-2" type="submit" [disabled]="signUpForm.invalid">S'inscrire</button>
+      <button class="btn btn-primary mb-2  mt-2" type="submit" [disabled]="signUpForm.invalid">S'inscrire</button>
     </form>
     <p class="text-danger">{{ errorMessage }}</p>
   </div>

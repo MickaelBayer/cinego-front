@@ -11,6 +11,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { CinemaModule } from './cinema/cinema.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth/interceptors/auth-interceptor';
+import { FilmModule } from './film/film.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthInterceptor } from './auth/interceptors/auth-interceptor';
     NgbModule,
     AuthModule,
     CinemaModule,
-    HttpClientModule
+    HttpClientModule,
+    FilmModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
