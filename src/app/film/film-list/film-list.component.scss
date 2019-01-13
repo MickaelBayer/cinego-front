@@ -1,0 +1,41 @@
+@import "../../../../node_modules/bootstrap/scss/_functions.scss";
+@import "../../../../node_modules/bootstrap/scss/_variables.scss";
+@import "../../../../node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+
+.btn { /* apply to all bootstrap button */
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+.card-footer {
+  text-align: center;
+  padding: .5rem 1.25rem;/* Just to make sure the <a> fills the whole card header */
+  cursor: pointer;
+}
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+$grid-gutter-width: 30px !default;
+
+// number of cards per line for each breakpoint
+$cards-per-line: (
+  xs: 1,
+  sm: 2,
+  md: 3,
+  lg: 4,
+  xl: 5
+);
+
+@each $name, $breakpoint in $grid-breakpoints {
+  @media (min-width: $breakpoint) {
+      .card-deck .card {
+          flex: 0 0 calc(#{100/map-get($cards-per-line, $name)}% - #{$grid-gutter-width});
+      }
+  }
+}

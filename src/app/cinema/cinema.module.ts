@@ -18,6 +18,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ],
   providers: [
     CinemaService
+  ],
+  entryComponents: [
+    CinemaSelectFormComponent
   ]
 })
 

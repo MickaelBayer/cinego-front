@@ -3,6 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cinema } from '../cinema';
 import { CinemaService } from '../cinema.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { SeanceService } from 'src/app/seance/seance.service';
+import { FilmService } from 'src/app/film/film.service';
+import { Film } from 'src/app/film/film';
 
 @Component({
   selector: 'app-cinema-select-form',
@@ -17,24 +21,39 @@ export class CinemaSelectFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private cinemaService: CinemaService,
-              private router: Router) { }
+              private seanceService: SeanceService,
+              private filmService: FilmService,
+              private router: Router,
+              public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
     this.initForm();
   }
 
   initForm() {
-    this.cinemaService.getCinemas().then(
-      (response: Cinema[]) => {
-        this.cinemas = response ? response : [];
-      },
-      (error) => {
-        // FORMAT THIS ERROR MSG
-        this.errorMessage = error;
-      }
-    );
+    if (this.filmService.film) {
+      this.cinemaService.getCinemaWithFilm(this.filmService.film).then(
+        (response: Cinema[]) => {
+          this.cinemas = response ? response : [];
+        },
+        (error) => {
+          // FORMAT THIS ERROR MSG
+          this.errorMessage = error;
+        }
+      );
+    } else {
+      this.cinemaService.getCinemas().then(
+        (response: Cinema[]) => {
+          this.cinemas = response ? response : [];
+        },
+        (error) => {
+          // FORMAT THIS ERROR MSG
+          this.errorMessage = error;
+        }
+      );
+    }
     this.cinemaSelectForm = this.formBuilder.group({
-      cinema: [null, [ Validators.required ]]
+      cinema: [null, [ Validators.required ]] // not used
     });
   }
 
@@ -42,8 +61,15 @@ export class CinemaSelectFormComponent implements OnInit {
     // load the cinema
     const cinemaToLoad = this.cinemaSelectForm.get('cinema').value;
     this.cinemaService.cinema = cinemaToLoad;
+    this.activeModal.close('Close click');
     this.cinemaService.emitCinema();
-    this.router.navigate(['/cinema', cinemaToLoad.id]);
+    this.filmService.loadFilms();
+    this.filmService.emitFilms();
+    if (this.filmService.film) {
+      this.router.navigate(['/seance']);
+    } else {
+      this.router.navigate(['/films']);
+    }
   }
 
 }

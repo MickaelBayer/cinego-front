@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password).then(
       () => {
         // si tout se passe bien, on redirige
-        this.router.navigate(['/cinema']);
+        this.router.navigate(['/films']);
       },
       (error) => {
         this.errorMessage = error['error']['error'];

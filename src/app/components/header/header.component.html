@@ -1,54 +1,25 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
   <a class="navbar-brand mb-0 h1" style="cursor:default"><b>Cinego</b></a>
-  <ul class="navbar-nav" *ngIf="isAuth"><!-- *ngIf="isAuth"-->
-    <li class="nav-item" ngbDropdown>
-      <a class="nav-link" id="navbarDropdown" role="button" style="cursor:pointer" ngbDropdownToggle>
-        Project
+  <ul class="navbar-nav mr-auto" *ngIf="isAuth"><!-- *ngIf="isAuth"-->
+    <li class="nav-item">
+      <a class="nav-link" routerLink="films" routerLinkActive="active">Films à l'affiche </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="onCinema()">Nos Cinémas </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown
       </a>
-      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" (click)="onNewProject()">New project</a>
-        <a class="dropdown-item" (click)="onLoadProject()">Load a project</a>
-        <a class="dropdown-item" (click)="onSaveProject()">Save the current project</a>
-        <a class="dropdown-item" (click)="onDeleteProject()">Delete a project</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" routerLink="#">Action</a>
-        <a class="dropdown-item" routerLink="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" routerLink="#">Something else here</a>
+        <a class="dropdown-item" href="#">Something else here</a>
       </div>
     </li>
-    <li class="nav-item" ngbDropdown>
-      <a class="nav-link" id="navbarDropdown" style="cursor:pointer" role="button" ngbDropdownToggle>
-        Annotation
-      </a>
-      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" routerLink="#">Action</a>
-        <a class="dropdown-item" routerLink="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" routerLink="#">Something else here</a>
-      </div>
-    </li>
-    <li class="nav-item" ngbDropdown>
-      <a class="nav-link" id="navbarDropdown" style="cursor:pointer" role="button" ngbDropdownToggle>
-        View
-      </a>
-      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" routerLink="#">Action</a>
-        <a class="dropdown-item" routerLink="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" routerLink="#">Something else here</a>
-      </div>
-    </li>
-    <li class="nav-item" ngbDropdown>
-      <a class="nav-link" id="navbarDropdown" style="cursor:pointer" role="button" ngbDropdownToggle>
-        Help
-      </a>
-      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" routerLink="#">Action</a>
-        <a class="dropdown-item" routerLink="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" routerLink="#">Something else here</a>
-      </div>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">

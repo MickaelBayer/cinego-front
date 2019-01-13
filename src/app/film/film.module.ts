@@ -2,16 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilmService } from './film.service';
 import { FilmListComponent } from './film-list/film-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FilmDetailsComponent } from './film-details/film-details.component';
+import { TruncatePipe } from '../tools/truncate.pipe';
 
 @NgModule({
   declarations: [
-    FilmListComponent
+    FilmListComponent,
+    FilmDetailsComponent,
+    TruncatePipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   exports: [
-    FilmListComponent
+    FilmListComponent,
+    FilmDetailsComponent
   ],
   providers: [
     FilmService

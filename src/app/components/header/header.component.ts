@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { CinemaSelectFormComponent } from 'src/app/cinema/cinema-select-form/cinema-select-form.component';
 
 @Component({
   selector: 'app-header',
@@ -33,5 +34,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onLogout() {
     this.authService.logout();
     this.router.navigate(['/auth', 'login']);
+  }
+
+  onCinema() {
+    this.modal.open(CinemaSelectFormComponent);
   }
 }

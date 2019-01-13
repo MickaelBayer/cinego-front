@@ -1,3 +1,12 @@
-<p>
-  film-list works!
-</p>
+<div class="card-deck">
+    <div class="card mb-3" style="width: 18rem;" *ngFor="let film of films">
+      <img class="card-img-top img-fluid" [src]="film.imgUrl" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ film.nom }} {{ datess }}</h5>
+        <p class="card-text h-50">{{ film.resume | truncate : 100 : true }}</p>
+      </div>
+      <div class="card-footer" (click)="onFooter(film)">
+        <h5>Détails, séances ...</h5>
+      </div>
+  </div>
+</div>

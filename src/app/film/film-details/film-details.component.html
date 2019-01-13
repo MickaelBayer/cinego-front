@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header">
+    <h4>{{ film.nom }}</h4>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="row">
+      <div class="col col-l-4 col-md-4 col-sm-12">
+        <img class="card-img-top img-fluid" [src]="film.imgUrl" alt="Card image cap">
+      </div>
+      <div class="col">
+        <h5 class="card-title">Résumé</h5>
+        <p class="card-text">{{ film.resume }}</p>
+        <h5 class="card-title">Genre</h5>
+        <p class="card-text">{{ film.genre }}.</p>
+        <h5 class="card-title">Réalisateur(s)</h5>
+        <p class="card-text">{{ film.realisateur }}.</p>
+        <h5 class="card-title">Acteurs</h5>
+        <p class="card-text">{{ film.acteurs }}.</p>
+        <h5 class="card-title">Durée</h5>
+        <p class="card-text">{{ film.duree }} mn.</p>
+        <a class="btn btn-primary" (click)="onSeances()">Voir les séances</a>
+      </div>
+    </div></div>
+  </div>
+</div>
