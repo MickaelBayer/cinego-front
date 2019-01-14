@@ -14,6 +14,7 @@ import { AuthInterceptor } from './auth/interceptors/auth-interceptor';
 import { FilmModule } from './film/film.module';
 import { SeanceModule } from './seance/seance.module';
 import { CinemaSelectFormComponent } from './cinema/cinema-select-form/cinema-select-form.component';
+import { SiegeModule } from './siege/siege.module';
 
 @NgModule({
   declarations: [

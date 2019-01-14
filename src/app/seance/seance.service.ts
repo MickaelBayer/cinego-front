@@ -25,22 +25,35 @@ export class SeanceService {
   }
 
   emitSeances() {
-    this.seancesSubject.next(this.seances.slice());
+    this.seancesSubject.next(this.seances);
   }
 
   loadSeances() {
-    return new Promise((resolve, reject) => {
+    if (this.cinemaService.cinema) {
       this.http.get('http://localhost:8282/seances/'
-                    + this.cinemaService.cinema.id + '/'
-                    + this.filmService.film.id)
-                .subscribe(
-        (response: Seance[]) => {
-          resolve(response);
+                  + this.cinemaService.cinema.id + '/'
+                  + this.filmService.film.id)
+               .subscribe(
+        (seances: Seance[]) => {
+          this.seances = seances;
+          this.emitSeances();
         },
         (error) => {
-          reject(error);
+          console.log(error);
         }
       );
-    });
+    } else {
+      this.http.get('http://localhost:8282/seances/film/'
+                  + this.filmService.film.id)
+              .subscribe(
+        (seances: Seance[]) => {
+          this.seances = seances;
+          this.emitSeances();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

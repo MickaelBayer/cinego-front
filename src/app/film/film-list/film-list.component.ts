@@ -26,12 +26,12 @@ export class FilmListComponent implements OnInit, OnDestroy {
               private router: Router) { }
 
   ngOnInit() {
-    console.log(this.dates);
     this.cinemaSubscription = this.cinemaService.cinemaSubject.subscribe(
       (cinema: Cinema) => {
         this.cinema = cinema;
       }
     );
+    this.cinemaService.cinema = null;
     this.cinemaService.emitCinema();
     this.filmsSubscription = this.filmService.filmsSubject.subscribe(
       (films: Film[]) => {

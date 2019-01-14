@@ -33,48 +33,25 @@ export class FilmService {
    * Ne charge que les films diffusés dans un cinéma si un est selectionné au préalable
    */
   loadFilms() {
-      if (this.cinemaService.cinema) {
-        this.http.get('http://localhost:8282/films/cinema/' + this.cinemaService.cinema.id).subscribe(
-          (response: Film[]) => {
-            this.films = response ? response : [];
-            this.emitFilms();
-          });
-      } else {
-        this.http.get('http://localhost:8282/films').subscribe(
-          (response: Film[]) => {
-            this.films = response ? response : [];
-            this.emitFilms();
-          }
-        );
-      }
+    if (this.cinemaService.cinema) {
+      this.http.get('http://localhost:8282/films/cinema/' + this.cinemaService.cinema.id).subscribe(
+        (response: Film[]) => {
+          this.films = response ? response : [];
+          this.emitFilms();
+        },
+        (error) => {
+          console.log(error);
+        });
+    } else {
+      this.http.get('http://localhost:8282/films').subscribe(
+        (response: Film[]) => {
+          this.films = response ? response : [];
+          this.emitFilms();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
-
-/*
-  loadFilms() {
-    return new Promise((resolve, reject) => {
-      if (this.cinemaService.cinema) {
-        this.http.get('http://localhost:8282/films/cinema/' + this.cinemaService.cinema.id).subscribe(
-          (response: Film[]) => {
-            this.films = response;
-            this.emitFilms();
-            resolve(response);
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      } else {
-        this.http.get('http://localhost:8282/films').subscribe(
-          (response: Film[]) => {
-            this.films = response;
-            this.emitFilms();
-            resolve(response);
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      }
-    });
-  }*/
+  }
 }

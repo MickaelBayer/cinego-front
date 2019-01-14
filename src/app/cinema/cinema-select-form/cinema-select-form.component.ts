@@ -7,6 +7,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SeanceService } from 'src/app/seance/seance.service';
 import { FilmService } from 'src/app/film/film.service';
 import { Film } from 'src/app/film/film';
+import { Seance } from 'src/app/seance/seance';
 
 @Component({
   selector: 'app-cinema-select-form',
@@ -66,6 +67,8 @@ export class CinemaSelectFormComponent implements OnInit {
     this.filmService.loadFilms();
     this.filmService.emitFilms();
     if (this.filmService.film) {
+      this.seanceService.loadSeances();
+      this.seanceService.emitSeances();
       this.router.navigate(['/seance']);
     } else {
       this.router.navigate(['/films']);

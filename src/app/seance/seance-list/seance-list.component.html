@@ -1,6 +1,7 @@
-<div class="card">
+<div class="card mb-2">
     <div class="card-header">
-      <h4>{{ cinema.nomCinema }} >> {{ film.nom }} >> Séances</h4>
+      <h4>
+        <span>{{ cinema.nomCinema }} >> </span>{{ film.nom }} >> Séances</h4>
     </div>
     <div class="card-body">
       <div class="container-fluid">
@@ -10,13 +11,7 @@
                 <span>&#9733; A <b>{{ seance.date | date: 'hh:mm' }}</b> le <b>{{ seance.date | date: 'dd MMMM yyyy' }}</b> &#9733;</span>
               </ng-template>
               <ng-template ngbPanelContent>
-                A {{ seance.date | date: 'hh:mm' }} le {{ seance.date | date: 'dd MMM' }}
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                labore sustainable VHS.
+                <app-siege-select-form [seance]="seance"></app-siege-select-form>
               </ng-template>
             </ngb-panel>
           </ngb-accordion>

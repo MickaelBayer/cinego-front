@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { Film } from 'src/app/film/film';
 import { Seance } from '../seance';
 import { SeanceService } from '../seance.service';
+import { Siege } from 'src/app/siege/siege';
 
 @Component({
   selector: 'app-seance-list',
@@ -20,8 +21,9 @@ export class SeanceListComponent implements OnInit, OnDestroy {
   film: Film;
   filmSubsctiption: Subscription;
   seances: Seance[];
-  seanceSubscription: Subscription;
+  seancesSubscription: Subscription;
   errorMessage: string;
+  seance: Seance;
 
   constructor(private router: Router,
               private cinemaService: CinemaService,
@@ -29,36 +31,38 @@ export class SeanceListComponent implements OnInit, OnDestroy {
               private seanceService: SeanceService) { }
 
   ngOnInit() {
+    // cinema sub
     this.cinemaSubscription = this.cinemaService.cinemaSubject.subscribe(
       (response: Cinema) => {
         this.cinema = response;
       }
     );
     this.cinemaService.emitCinema();
+    // film sub
     this.filmSubsctiption = this.filmService.filmSubject.subscribe(
       (response: Film) => {
         this.film = response;
       }
     );
     this.filmService.emitFilm();
-    this.seanceService.loadSeances().then(
-      (response: Seance[]) => {
-        this.seances = response ? response : [];
-      },
-      (error) => {
-        this.errorMessage = error;
-      }
-    );
-    this.seanceService.seances = this.seances;
-    /*this.seanceSubscription = this.seanceService.seanceSubject.subscribe(
-      (seances: Seance[]) => {
+    // seance sub
+    this.seancesSubscription = this.seanceService.seancesSubject.subscribe(
+      (seances) => {
         this.seances = seances;
       }
-    );*/
+    );
+    this.seanceService.loadSeances();
+    this.seanceService.emitSeances();
   }
 
   ngOnDestroy() {
     this.cinemaSubscription.unsubscribe();
     this.filmSubsctiption.unsubscribe();
+    this.seancesSubscription.unsubscribe();
   }
+
+  onLoadSalle(seance) {
+    console.log(seance);
+  }
+
 }

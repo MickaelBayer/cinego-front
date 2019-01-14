@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h5>Sélectionnez vos places ...</h5>
+      <span *ngFor="let siege of sieges; let i = index">
+        <br *ngIf="checkRangee(i)">
+        <a [id]="siege.id" (click)="onChangeImg(siege)" [ngClass]="{'reserve': siege.estReserve}">
+          <img class="siegeImg" [src]="determineImg(siege)">
+        </a>
+      </span>
+      <br>
+      <b> E C R A N </b>
+    </div>
+    <div class="col">
+      Achat de place non sélectionnées à prévoir.
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <button class="btn btn-success" routerLink="">Valider</button>
+</div>

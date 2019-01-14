@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SeanceListComponent } from './seance-list/seance-list.component';
 import { SeanceService } from './seance.service';
-import { NgbAccordion, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SiegeModule } from '../siege/siege.module';
+import { SiegeSelectFormComponent } from '../siege/siege-select-form/siege-select-form.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { NgbAccordion, NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    SiegeModule
   ],
   exports: [
     SeanceListComponent
