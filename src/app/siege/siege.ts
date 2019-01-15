@@ -1,3 +1,5 @@
+import { Seance } from '../seance/seance';
+
 export class Siege {
 
     constructor (public id: number,
@@ -5,6 +7,6 @@ export class Siege {
                  public type: string,
                  public numSiege: number,
                  public numRangee: number,
-                 public idSeance: number
+                 public seance: Seance
     ) { }
 }

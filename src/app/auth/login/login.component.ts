@@ -34,8 +34,12 @@ export class LoginComponent implements OnInit {
     const password = this.signInForm.get('password').value;
     this.authService.login(email, password).then(
       () => {
-        // si tout se passe bien, on redirige
-        this.router.navigate(['/films']);
+        this.authService.getUserId().then(
+          () => {
+            // si tout se passe bien, on redirige
+            this.router.navigate(['/films']);
+          }
+        );
       },
       (error) => {
         this.errorMessage = error['error']['error'];

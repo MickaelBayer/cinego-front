@@ -18,6 +18,26 @@ export class SiegeService {
   getSieges(seance: Seance) {
     return new Promise((resolve, reject) => {
       this.http.get('http://localhost:8282/siege/seance/' + seance.id).subscribe(
+        (response) => { console.log(response);
+          resolve(response);
+          // resolve(response[0].seance.sieges ? response[0].seance.sieges : response);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+  }
+
+  validResa() {
+    this.sieges.forEach(element => {
+      element.estReserve = true;
+    });
+  }
+
+  saveSieges() {
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost:8282/siege/sieges', this.sieges).subscribe(
         (response) => {
           resolve(response);
         },
@@ -28,19 +48,6 @@ export class SiegeService {
     });
   }
 
-  /*
-  getSieges(seance: Seance) {
-    this.http.get('http://localhost:8282/sieges/seance/' + seance.id).subscribe(
-      (sieges: Siege[]) => {
-        this.sieges = sieges ? sieges : [];
-        this.emitSieges();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-*/
   emitSieges() {
     this.siegesSubject.next(this.sieges);
   }

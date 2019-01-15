@@ -15,6 +15,8 @@ import { FilmModule } from './film/film.module';
 import { SeanceModule } from './seance/seance.module';
 import { CinemaSelectFormComponent } from './cinema/cinema-select-form/cinema-select-form.component';
 import { SiegeModule } from './siege/siege.module';
+import { CommandeModule } from './commande/commande.module';
+import { CommandeValidationModalComponent } from './commande/commande-validation-modal/commande-validation-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,14 @@ import { SiegeModule } from './siege/siege.module';
     CinemaModule,
     HttpClientModule,
     FilmModule,
-    SeanceModule
+    SeanceModule,
+    CommandeModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],
   entryComponents: [
-    CinemaSelectFormComponent
+    CinemaSelectFormComponent,
+    CommandeValidationModalComponent
   ]
 })
 export class AppModule { }

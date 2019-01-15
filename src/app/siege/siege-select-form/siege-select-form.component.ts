@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Seance } from 'src/app/seance/seance';
 import { SiegeService } from '../siege.service';
 import { Siege } from '../siege';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-siege-select-form',
@@ -15,7 +16,8 @@ export class SiegeSelectFormComponent implements OnInit {
   sieges: Siege[];
   siegesSelect: Siege[] = [];
 
-  constructor(private siegeService: SiegeService) { }
+  constructor(private siegeService: SiegeService,
+              private router: Router) { }
 
   ngOnInit() {
     this.siegeService.getSieges(this.seance).then(
@@ -79,4 +81,9 @@ export class SiegeSelectFormComponent implements OnInit {
     this.determineImg(siege);
   }
 
+  onValider() {
+    this.siegeService.sieges = this.siegesSelect;
+    this.siegeService.emitSieges();
+    this.router.navigate(['/commande']);
+  }
 }

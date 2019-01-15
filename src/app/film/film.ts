@@ -6,6 +6,7 @@ export class Film {
         public genre: string,
         public duree: number,
         public realisateur: string,
-        public acteurs: string
+        public acteurs: string,
+        public resume: string
     ) { }
 }

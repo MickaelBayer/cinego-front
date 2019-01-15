@@ -18,8 +18,6 @@ export class FilmListComponent implements OnInit, OnDestroy {
   cinema: Cinema;
   cinemaSubscription: Subscription;
   errorMessage: string;
-  date = new Date(); dates = this.date.toString();
-  datess = new Date(this.dates);
 
   constructor(private filmService: FilmService,
               private cinemaService: CinemaService,
@@ -54,6 +52,5 @@ export class FilmListComponent implements OnInit, OnDestroy {
     this.cinemaSubscription.unsubscribe();
     this.filmsSubscription.unsubscribe();
   }
-
 
 }

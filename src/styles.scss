@@ -40,3 +40,20 @@ ngb-accordion .card-header > * > * {
   .titre { /* center the title */
     text-align: center;
  }
+
+ .bg-light {
+   background-color: rgb(245, 230, 207) !important;
+ }
+ .card-header{
+   background-color: rgb(245, 230, 207) !important;
+ }
+ .card-footer{
+  background-color: rgb(245, 230, 207) !important;
+}
+.btn-primary {
+  background-color: rgb(84, 149, 141) !important;
+}
+.btn-success {
+  background-color: rgb(84, 149, 141) !important;
+}
+

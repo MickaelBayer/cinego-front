@@ -9,6 +9,7 @@ import { CinemaSelectFormComponent } from './cinema/cinema-select-form/cinema-se
 import { FilmListComponent } from './film/film-list/film-list.component';
 import { FilmDetailsComponent } from './film/film-details/film-details.component';
 import { SeanceListComponent } from './seance/seance-list/seance-list.component';
+import { CommandeValidationComponent } from './commande/commande-validation/commande-validation.component';
 
 const routes: Routes = [
   {path: 'auth/login', component: LoginComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'films', canActivate: [AuthGuardService], component: FilmListComponent},
   {path: 'films/details', canActivate: [AuthGuardService], component: FilmDetailsComponent},
   {path: 'seance', canActivate: [AuthGuardService], component: SeanceListComponent},
+  {path: 'commande', canActivate: [AuthGuardService], component: CommandeValidationComponent},
   // redirections
   { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent }
