@@ -39,15 +39,11 @@ export class SignupComponent implements OnInit {
     this.authService.createNewUser(nom, prenom , mail, password).then(
       () => {
         // si tout se passe bien, on redirige
-        this.router.navigate(['/home']);
+        this.router.navigate(['/films']);
       },
       (error) => {
         console.log(error);
-        /*if (error['error']['error']['errors']['mail']['kind'] === 'unique') {
-          this.errorMessage = 'Email already used !';
-        } else {
-          this.errorMessage = error;
-        }*/
+        this.errorMessage = error;
       }
     );
   }

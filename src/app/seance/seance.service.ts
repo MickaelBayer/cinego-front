@@ -30,7 +30,7 @@ export class SeanceService {
 
   loadSeances() {
     if (this.cinemaService.cinema) {
-      this.http.get('http://localhost:8282/seances/'
+      this.http.get('http://127.0.0.1:8282/seances/'
                   + this.cinemaService.cinema.id + '/'
                   + this.filmService.film.id)
                .subscribe(
@@ -43,7 +43,7 @@ export class SeanceService {
         }
       );
     } else {
-      this.http.get('http://localhost:8282/seances/film/'
+      this.http.get('http://127.0.0.1:8282/seances/film/'
                   + this.filmService.film.id)
               .subscribe(
         (seances: Seance[]) => {

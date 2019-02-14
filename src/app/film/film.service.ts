@@ -34,7 +34,7 @@ export class FilmService {
    */
   loadFilms() {
     if (this.cinemaService.cinema) {
-      this.http.get('http://localhost:8282/films/cinema/' + this.cinemaService.cinema.id).subscribe(
+      this.http.get('http://127.0.0.1:8282/films/cinema/' + this.cinemaService.cinema.id).subscribe(
         (response: Film[]) => {
           this.films = response ? response : [];
           this.emitFilms();
@@ -43,7 +43,7 @@ export class FilmService {
           console.log(error);
         });
     } else {
-      this.http.get('http://localhost:8282/films').subscribe(
+      this.http.get('http://127.0.0.1:8282/films').subscribe(
         (response: Film[]) => {
           this.films = response ? response : [];
           this.emitFilms();

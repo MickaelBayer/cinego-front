@@ -24,7 +24,7 @@ export class CinemaService {
    */
   getCinemas() {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:8282/cinema').subscribe(
+      this.http.get('http://127.0.0.1:8282/cinema').subscribe(
         (response) => {
           // an array of cinema
           resolve(response);
@@ -38,7 +38,7 @@ export class CinemaService {
 
   getCinemaWithFilm(film: Film) {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:8282/cinema/film/' + film.id ).subscribe(
+      this.http.get('http://127.0.0.1:8282/cinema/film/' + film.id ).subscribe(
         (response) => {
           // an array of cinema
           resolve(response);

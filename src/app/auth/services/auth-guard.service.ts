@@ -11,6 +11,10 @@ export class AuthGuardService implements CanActivate {
   constructor(private authService: AuthService,
               private router: Router) {}
 
+
+  /**
+   * Middleware pour la restriction des routes en fonction de la connexion
+   */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return Observable.create(
       (observer) => {

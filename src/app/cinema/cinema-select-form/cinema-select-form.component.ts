@@ -23,7 +23,7 @@ export class CinemaSelectFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private cinemaService: CinemaService,
               private seanceService: SeanceService,
-              private filmService: FilmService,
+              public filmService: FilmService,
               private router: Router,
               public activeModal: NgbActiveModal) { }
 

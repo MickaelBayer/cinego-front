@@ -25,7 +25,7 @@ export class CommandeService {
     this.emitCommande();
     console.log(this.commande);
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:8282/commande', this.commande).subscribe(
+      this.http.post('http://127.0.0.1:8282/commande', this.commande).subscribe(
         (response) => {
           resolve(response);
         },
@@ -38,7 +38,7 @@ export class CommandeService {
 
   updateUserCommand() {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:8282/user/' + this.commande.personne).subscribe(
+      this.http.get('http://127.0.0.1:8282/user/' + this.commande.personne).subscribe(
         (response) => {
           this.commande.personne = response;
           this.emitCommande();

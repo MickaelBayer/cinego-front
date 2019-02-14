@@ -17,8 +17,8 @@ export class SiegeService {
 
   getSieges(seance: Seance) {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:8282/siege/seance/' + seance.id).subscribe(
-        (response) => { console.log(response);
+      this.http.get('http://127.0.0.1:8282/siege/seance/' + seance.id).subscribe(
+        (response) => {
           resolve(response);
           // resolve(response[0].seance.sieges ? response[0].seance.sieges : response);
         },
@@ -37,7 +37,7 @@ export class SiegeService {
 
   saveSieges() {
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:8282/siege/sieges', this.sieges).subscribe(
+      this.http.post('http://127.0.0.1:8282/siege/sieges', this.sieges).subscribe(
         (response) => {
           resolve(response);
         },

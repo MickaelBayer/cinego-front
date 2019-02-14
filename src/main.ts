@@ -8,5 +8,13 @@ if (environment.production) {
   enableProdMode();
 }
 
+/* DEVICE MOBILE / CORDOVA */
+// const onDeviceReady = () => {
+//   platformBrowserDynamic().bootstrapModule(AppModule)
+//   .catch(err => console.error(err));
+// };
+
+// document.addEventListener('deviceready', onDeviceReady, false);
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
