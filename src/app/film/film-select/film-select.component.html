@@ -1,0 +1,35 @@
+<div class="modal-header" style="background-color: #f8f9fa;">
+    <h4 class="modal-title">Choix du film</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="filmSaisieForm" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+      <div class="form-group">
+        <select class="custom-select" formControlName="filmConnu" id="filmConnu" ngbAutofocus>
+          <option [ngValue]="null">Films connus</option>
+          <option *ngFor="let film of allFilms" [ngValue]="film">
+            {{ film.nom }} ({{ film.releaseDate }})
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="titre">Titre du film</label>
+        <input type="text" id="titre" class="form-control input" formControlName="titre" autofocus>
+      </div>
+      <p class="text-danger">{{ errorMessage }}</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" type="submit" [disabled]="filmSaisieForm.invalid">Chercher</button>
+    </div>
+  </form>
+
+  <!-- <div class="form-group">
+      <select class="custom-select" formControlName="filmConnu" id="filmConnu" ngbAutofocus>
+        <option [ngValue]="null">Films connus</option>
+        <option *ngFor="let film of allFilms" [ngValue]="film">
+          {{ film.nom (film.releaseDate)}}
+        </option>
+      </select>
+    </div> -->

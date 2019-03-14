@@ -16,6 +16,7 @@ import { SeanceModule } from './seance/seance.module';
 import { CinemaSelectFormComponent } from './cinema/cinema-select-form/cinema-select-form.component';
 import { CommandeModule } from './commande/commande.module';
 import { CommandeValidationModalComponent } from './commande/commande-validation-modal/commande-validation-modal.component';
+import { FilmSelectComponent } from './film/film-select/film-select.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CommandeValidationModalComponent } from './commande/commande-validation
   bootstrap: [AppComponent],
   entryComponents: [
     CinemaSelectFormComponent,
-    CommandeValidationModalComponent
+    CommandeValidationModalComponent,
+    FilmSelectComponent
   ]
 })
 export class AppModule { }

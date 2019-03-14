@@ -12,6 +12,17 @@
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
+    <li routerLinkActive="active" class="nav-item" *ngIf="isAdmin" ngbDropdown>
+      <a class="nav-link" id="navbarDropdown" role="button" style="cursor:pointer" ngbDropdownToggle>
+          Menu Admin
+      </a>
+      <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" (click)="onCreateSeance()">Créer une séance</a>
+        <a class="dropdown-item" routerLink="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink="cinema/create">Création d'un cinéma</a>
+      </div>
+    </li>
     <li routerLinkActive="active" class="nav-item" *ngIf="!isAuth">
       <a routerLink="auth/signup" class="nav-link">Créer un compte</a>
     </li>

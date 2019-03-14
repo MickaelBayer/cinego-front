@@ -27,7 +27,6 @@ export class FilmService {
     this.filmsSubject.next(this.films);
   }
 
-
   /**
    * Charge les films de la BD.
    * Ne charge que les films diffusés dans un cinéma si un est selectionné au préalable
@@ -53,5 +52,21 @@ export class FilmService {
         }
       );
     }
+  }
+
+  /**
+   * Charge tous les films de la base de données
+   */
+  loadAllFilms() {
+    return new Promise ((resolve, reject) => {
+      this.http.get('http://127.0.0.1:8282/films').subscribe(
+        (response: Film[]) => {
+          resolve(response);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
   }
 }

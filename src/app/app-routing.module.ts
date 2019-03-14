@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuardService } from './auth/services/auth-guard.service';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { CinemaSelectFormComponent } from './cinema/cinema-select-form/cinema-select-form.component';
+import { CinemaCreateFormComponent } from './cinema/cinema-create-form/cinema-create-form.component';
 import { FilmListComponent } from './film/film-list/film-list.component';
 import { FilmDetailsComponent } from './film/film-details/film-details.component';
 import { SeanceListComponent } from './seance/seance-list/seance-list.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'auth/login', component: LoginComponent},
   {path: 'auth/signup', component: SignupComponent},
   {path: 'cinema', canActivate: [AuthGuardService], component: CinemaSelectFormComponent},
+  {path: 'cinema/create', canActivate: [AuthGuardService], component: CinemaCreateFormComponent},
   {path: 'home', canActivate: [AuthGuardService], component: HomeComponent},
   {path: 'films', canActivate: [AuthGuardService], component: FilmListComponent},
   {path: 'films/details', canActivate: [AuthGuardService], component: FilmDetailsComponent},

@@ -7,6 +7,7 @@ export class Film {
         public duree: number,
         public realisateur: string,
         public acteurs: string,
-        public resume: string
+        public resume: string,
+        public releaseDate: Date
     ) { }
 }

@@ -5,20 +5,26 @@ import { FilmListComponent } from './film-list/film-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilmDetailsComponent } from './film-details/film-details.component';
 import { TruncatePipe } from '../tools/truncate.pipe';
+import { FilmSelectComponent } from './film-select/film-select.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     FilmListComponent,
     FilmDetailsComponent,
-    TruncatePipe
+    TruncatePipe,
+    FilmSelectComponent
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     FilmListComponent,
-    FilmDetailsComponent
+    FilmDetailsComponent,
+    FilmSelectComponent
   ],
   providers: [
     FilmService

@@ -35,7 +35,7 @@ export class SeanceService {
                   + this.filmService.film.id)
                .subscribe(
         (seances: Seance[]) => {
-          this.seances = seances;
+          this.seances = seances; console.log(seances);
           this.emitSeances();
         },
         (error) => {

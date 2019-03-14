@@ -10,6 +10,7 @@ import * as moment from '../../../../node_modules/moment';
 export class AuthService {
 
   isAuth$ = new BehaviorSubject<boolean>(this.isLoggedIn());
+  isAdmin$ = new BehaviorSubject<boolean>(this.isLoggedIn());
   token: string;
   userId;
 
@@ -64,13 +65,26 @@ export class AuthService {
         'http://127.0.0.1:8282/login',
         { mail: mail, mdph5: password })
         .subscribe(
-          (data: { token: string , expiresIn: string, userId: string}) =>  {
-            this.token = data.token;
+          (data: { token: string , expiresIn: string, userId: string, admin: string}) =>  {
+            this.token = data.token; console.log(data);
             const expiresAt = moment().add(data.expiresIn, 'millisecond');
             localStorage.setItem('id_token', data.token);
             localStorage.setItem('expires_at', JSON.stringify(expiresAt) );
             this.userId = data.userId;
             this.isAuth$.next(true);
+            this.http.get('http://127.0.0.1:8282/user/updateUserId/' + this.userId).subscribe(
+              (res: Personne) => {
+                if (res) {
+                  console.log(res);
+                  this.isAdmin$.next(res.admin);
+                  console.log( this.isAdmin$.value);
+                }
+                resolve();
+              },
+              (error) => {
+                reject(error);
+              }
+            );
             resolve();
           },
           (error) => {
@@ -103,6 +117,7 @@ export class AuthService {
    */
   logout() {
     this.isAuth$.next(false);
+    this.isAdmin$.next(false);
     this.userId = null;
     this.token = null;
     localStorage.removeItem('id_token');

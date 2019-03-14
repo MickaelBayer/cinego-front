@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CinemaSelectFormComponent } from 'src/app/cinema/cinema-select-form/cinema-select-form.component';
 import { CinemaService } from 'src/app/cinema/cinema.service';
 import { Cinema } from 'src/app/cinema/cinema';
+import { FilmSelectComponent } from 'src/app/film/film-select/film-select.component';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,9 @@ import { Cinema } from 'src/app/cinema/cinema';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   isAuthSubcription: Subscription;
+  isAdminSubscription: Subscription;
   isAuth: boolean;
+  isAdmin: boolean;
 
   cinema: Cinema;
   cinemaSubscription: Subscription;
@@ -31,6 +34,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isAuth = auth;
       }
     );
+    this.isAdminSubscription = this.authService.isAdmin$.subscribe(
+      (admin) => {
+        this.isAdmin = admin;
+      }
+    );
     this.cinemaSubscription = this.cinemaService.cinemaSubject.subscribe(
       (cinema) => {
         this.cinema = cinema;
@@ -41,6 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.isAuthSubcription.unsubscribe();
+    this.isAdminSubscription.unsubscribe();
     this.cinemaSubscription.unsubscribe();
   }
 
@@ -51,5 +60,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onCinema() {
     this.modal.open(CinemaSelectFormComponent);
+  }
+
+  onCreateSeance() {
+    this.modal.open(FilmSelectComponent);
   }
 }
